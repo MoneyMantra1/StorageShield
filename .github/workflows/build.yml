@@ -23,11 +23,12 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.8
+
+      - name: Make Gradle wrapper executable
+        run: chmod +x ./gradlew
 
       - name: Build mod
-        run: gradle build --no-daemon
+        run: ./gradlew build --no-daemon
 
       - name: Upload built jar
         uses: actions/upload-artifact@v4
